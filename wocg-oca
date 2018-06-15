@@ -1,0 +1,21 @@
+#!/opt/oca-maintainer-tools/bin/python
+import subprocess
+
+from tools.oca_projects import (
+    get_repositories_and_branches,
+    MAIN_BRANCHES,
+)
+
+branches = MAIN_BRANCHES[2:]  # skip 6.1 and 7.0
+
+for repo, branch in get_repositories_and_branches(branches=branches):
+    subprocess.check_call([
+        '/usr/local/bin/wocg-create-project',
+        '--repository', 'https://github.com/OCA/' + repo,
+        '--branch', branch,
+        '--tmpl-component-slug', '0-oca-project-template-addon',
+    ])
+
+subprocess.check_call([
+    '/usr/local/bin/wocg-create-components',
+])
