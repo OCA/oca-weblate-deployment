@@ -9,6 +9,10 @@ RUN apt-get install -y virtualenv && \
 
 COPY wocg-oca /usr/local/bin/
 
+# ssmtp to have sendmail, so cron can send notifications
+RUN apt-get install -y ssmtp
+COPY ssmtp.conf /etc/ssmtp/
+
 COPY crontab.txt /tmp/
 RUN crontab -u weblate /tmp/crontab.txt ; rm /tmp/crontab.txt
 
