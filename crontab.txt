@@ -7,7 +7,7 @@ MAILTO=transbot@odoo-community.org
 @weekly . /etc/profile.d/weblate.sh; /usr/local/bin/weblate cleanuptrans
 
 # Commit pending changes
-0 * * * * . /etc/profile.d/weblate.sh; /usr/local/bin/weblate commit_pending --all
+0 * * * * . /etc/profile.d/weblate.sh; /usr/local/bin/weblate commit_pending --all > /tmp/commit_pending.log 2>&1 || cat /tmp/commit_pending.log
 
 # git pull
 15 * * * * . /etc/profile.d/weblate.sh; /usr/local/bin/weblate updategit --all > /tmp/updategit.log 2>&1 || cat /tmp/updategit.log
