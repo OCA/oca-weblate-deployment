@@ -13,6 +13,8 @@ COPY wocg-oca /usr/local/bin/
 RUN apt-get install -y ssmtp
 COPY ssmtp.conf /etc/ssmtp/
 
+RUN apt-get install cron
+COPY supervisor-cron.conf /etc/supervisor/conf.d/
 COPY crontab.txt /tmp/
 RUN crontab -u weblate /tmp/crontab.txt ; rm /tmp/crontab.txt
 
