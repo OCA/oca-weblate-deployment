@@ -1,6 +1,6 @@
 FROM weblate/weblate
 
-RUN pip3 install git+https://github.com/acsone/weblate-odoo-component-generator#egg=weblate-odoo-component-generator
+RUN pip3 install git+https://github.com/acsone/weblate-odoo-component-generator@98644ecd3ae2#egg=weblate-odoo-component-generator
 
 # wocg-oca needs oca-maintainer-tools to enumerate addons repos and branches
 RUN apt-get install -y virtualenv && \
