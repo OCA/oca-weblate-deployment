@@ -1,4 +1,4 @@
-FROM weblate/weblate:3.4-4
+FROM weblate/weblate:3.5-1
 
 RUN pip3 install git+https://github.com/acsone/weblate-odoo-component-generator@98644ecd3ae2#egg=weblate-odoo-component-generator
 
