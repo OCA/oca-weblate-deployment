@@ -1,4 +1,0 @@
-MAILTO=transbot@odoo-community.org
-
-# create oca projects and components
-30 * * * * . /etc/profile.d/weblate.sh; . /etc/profile.d/oca.sh; /usr/local/bin/wocg-oca > /tmp/wocg-oca.log 2>&1 || cat /tmp/wocg-oca.log

@@ -1,0 +1,20 @@
+import subprocess
+
+from weblate.celery import app
+
+
+ADMINS = ()
+
+
+@app.task
+def wocg_oca():
+    subprocess.check_call("/usr/local/bin/wocg-oca")
+
+
+@app.on_after_finalize.connect
+def setup_periodic_tasks(sender, **kwargs):
+    sender.add_periodic_task(
+        3600,
+        wocg_oca.s(),
+        name='wocg-oca',
+    )
