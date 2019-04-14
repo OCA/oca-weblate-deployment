@@ -1,8 +1,0 @@
-#!/bin/sh
-export | grep -E GITHUB_TOKEN > /etc/profile.d/oca.sh
-# we need LC_ALL and LANG to be UTF-8 for click
-echo "export LC_ALL=C.UTF-8" >> /etc/profile.d/oca.sh
-echo "export LANG=C.UTF-8" >> /etc/profile.d/oca.sh
-echo "export DJANGO_SETTINGS_MODULE=weblate.settings"  >> /etc/profile.d/oca.sh
-# run entrypoint of base image
-/app/bin/start "$@"
