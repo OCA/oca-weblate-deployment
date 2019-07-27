@@ -10,12 +10,12 @@ services:
       - ./data/weblate:/app/data
     env_file:
       - ./environment
-    restart: always
+    restart: unless-stopped
     depends_on:
       - cache
   cache:
     image: redis:4-alpine
-    restart: always
+    restart: unless-stopped
     command: ["redis-server", "--appendonly", "yes"]
     volumes:
       - ./data/redis:/data
