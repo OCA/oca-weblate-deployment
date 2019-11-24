@@ -5,7 +5,7 @@ services:
     links:
       - cache
     ports:
-      - 8001:80
+      - 8001:8080
     volumes:
       - ./data/weblate:/app/data
     env_file:
