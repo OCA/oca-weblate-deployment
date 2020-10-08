@@ -7,7 +7,7 @@ RUN pip3 install git+https://github.com/acsone/weblate-odoo-component-generator@
 # wocg-oca needs oca-maintainer-tools to enumerate addons repos and branches
 RUN apt-get install -y python3-venv && \
   python3 -m venv /opt/oca-maintainer-tools && \
-  /opt/oca-maintainer-tools/bin/pip install git+https://github.com/OCA/maintainer-tools@cc8903edd370bcd19c2e04bb9b928ef11862ad8b#egg=oca-maintainer-tools
+  /opt/oca-maintainer-tools/bin/pip install git+https://github.com/OCA/maintainer-tools@2c66e72d2fc12e919b85b75088215ed35c579c3b#egg=oca-maintainer-tools
 
 COPY wocg-oca /usr/local/bin/
 
