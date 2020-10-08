@@ -1,4 +1,4 @@
-FROM weblate/weblate:3.8-2
+FROM weblate/weblate:3.10-1
 
 USER 0
 
