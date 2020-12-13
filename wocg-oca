@@ -6,7 +6,7 @@ from tools.oca_projects import (
     MAIN_BRANCHES,
 )
 
-branches = MAIN_BRANCHES[2:]  # skip 6.1 and 7.0
+branches = [b for b in MAIN_BRANCHES if b not in ("6.1", "7.0")]
 
 for repo, branch in get_repositories_and_branches(branches=branches):
     subprocess.check_call([
