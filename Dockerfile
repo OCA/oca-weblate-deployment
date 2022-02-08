@@ -8,8 +8,8 @@ RUN pip3 install git+https://github.com/acsone/weblate-odoo-component-generator@
 RUN apt-get update && \
   apt-get install -y python3-venv && \
   python3 -m venv /opt/oca-maintainer-tools && \
-  /opt/oca-maintainer-tools/bin/pip install wheel && \
-  /opt/oca-maintainer-tools/bin/pip install git+https://github.com/OCA/maintainer-tools@7214f9584abebfc503968547d06a2c9377a083b9#egg=oca-maintainer-tools
+  /opt/oca-maintainer-tools/bin/pip install -U pip wheel setuptools && \
+  /opt/oca-maintainer-tools/bin/pip install git+https://github.com/OCA/maintainer-tools@7214f9584abebfc503968547d06a2c9377a083b9
 
 COPY wocg-oca /usr/local/bin/
 
