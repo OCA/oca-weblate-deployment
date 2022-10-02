@@ -1,14 +1,15 @@
 #!/opt/oca-maintainer-tools/bin/python
 import subprocess
 
-from tools.oca_projects import (
-    get_repositories_and_branches,
-    MAIN_BRANCHES,
-)
+from tools.config import is_main_branch
+from tools.oca_projects import get_repositories_and_branches
 
-branches = [b for b in MAIN_BRANCHES if b not in ("6.1", "7.0")]
 
-for repo, branch in get_repositories_and_branches(branches=branches):
+def branch_filter(branch):
+    return is_main_branch(branch) and branch not in ("6.1", "7.0")
+
+
+for repo, branch in get_repositories_and_branches(branch_filter=branch_filter):
     subprocess.check_call([
         '/usr/local/bin/wocg-create-project',
         '--repository', 'https://github.com/OCA/' + repo,
