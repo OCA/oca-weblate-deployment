@@ -1,6 +1,12 @@
 # See Weblate documentation for detailed description:
 # https://docs.weblate.org/en/latest/admin/deployments.html#docker
 
+# limit concurrency
+WEB_WORKERS=4
+CELERY_MAIN_OPTIONS=--concurrency 2
+CELERY_NOTIFY_OPTIONS=--concurrency 1
+CELERY_TRANSLATE_OPTIONS=--concurrency 1
+
 # Weblate setup
 WEBLATE_DEBUG=0
 WEBLATE_LOGLEVEL=DEBUG
@@ -11,9 +17,11 @@ WEBLATE_ADMIN_PASSWORD=
 WEBLATE_SERVER_EMAIL=noreply@odoo-community.org
 WEBLATE_DEFAULT_FROM_EMAIL=weblate@odoo-community.org
 WEBLATE_ALLOWED_HOSTS=*
+WEBLATE_SITE_DOMAIN=translation.odoo-community.org
 WEBLATE_REGISTRATION_OPEN=1
 WEBLATE_SIMPLIFY_LANGUAGES=0
 WEBLATE_AUTO_UPDATE=1
+WEBLATE_DEFAULT_SHARED_TM=1
 
 # Extra
 #WEBLATE_TIME_ZONE=
@@ -33,6 +41,7 @@ WEBLATE_SOCIAL_AUTH_GITHUB_SECRET=
 #WEBLATE_GOOGLE_ANALYTICS_ID=
 WEBLATE_ENABLE_HTTPS=1
 #WEBLATE_REQUIRE_LOGIN=1
+WEBLATE_IP_PROXY_HEADER=HTTP_X_FORWARDED_FOR
 
 # PostgreSQL setup
 POSTGRES_PASSWORD=
@@ -41,12 +50,21 @@ POSTGRES_DATABASE=weblate
 POSTGRES_HOST=
 POSTGRES_PORT=
 
+# Cache setup
+# https://docs.weblate.org/en/latest/admin/install.html#production-cache
+REDIS_HOST=cache
+REDIS_PORT=6379
+
 # Mail server, the server has to listen on port 587 and understand TLS
 WEBLATE_EMAIL_HOST=
 # Do NOT use quotes here
-WEBLATE_EMAIL_USER=weblate
+WEBLATE_EMAIL_HOST_USER=weblate
 # Do NOT use quotes here
-WEBLATE_EMAIL_PASSWORD=
+WEBLATE_EMAIL_HOST_PASSWORD=
+
+# SENTRY
+SENTRY_DSN=
+SENTRY_PUBLIC_DSN=
 
 # oca-transbot GitHub token to for maintainer-tools get_repositories()
 GITHUB_TOKEN=
