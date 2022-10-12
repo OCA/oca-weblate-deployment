@@ -2,10 +2,11 @@ version: '2'
 services:
   weblate:
     build: .
-    links:
-      - cache
+    image: weblate-oca
     ports:
       - 8001:8080
+    tmpfs:
+      - /app/cache
     volumes:
       - ./data/weblate:/app/data
     env_file:
