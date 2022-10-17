@@ -2,7 +2,7 @@ FROM weblate/weblate:4.14.1-1
 
 USER 0
 
-RUN pip3 install "weblate-odoo-component-generator @ git+https://github.com/lefilament/weblate-odoo-component-generator@9c28ea39ca80881242b838d08e9301f5a9d6ab60"
+RUN pip3 install "weblate-odoo-component-generator @ git+https://github.com/acsone/weblate-odoo-component-generator@1152f66ae6d94e46199be7ab7c39dd88ba812ef6"
 
 # wocg-oca needs oca-maintainer-tools to enumerate addons repos and branches
 RUN apt-get update && \
