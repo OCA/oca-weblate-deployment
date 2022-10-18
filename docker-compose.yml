@@ -18,7 +18,9 @@ services:
     image: redis:6-alpine
     restart: unless-stopped
     # AFE 20191202: add no appendfsynconrewrite and auto aof rewrite min size options
-    command: ["redis-server", "--appendonly", "yes", "--no-appendfsync-on-rewrite", "yes", "--auto-aof-rewrite-min-size", "128mb"]
+    #command: ["redis-server", "--appendonly", "yes", "--no-appendfsync-on-rewrite", "yes", "--auto-aof-rewrite-min-size", "128mb"]
+    # SBI 20221016: use redis command from https://github.com/WeblateOrg/docker-compose/blob/main/docker-compose-https.yml
+    command: [redis-server, --save, '60', '1']
     volumes:
       - ./data/redis:/data
 networks:
