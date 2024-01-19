@@ -6,7 +6,7 @@ from tools.oca_projects import get_repositories_and_branches
 
 
 def branch_filter(branch):
-    return is_main_branch(branch) and branch not in ("6.1", "7.0")
+    return is_main_branch(branch) and branch not in ("6.1", "7.0", "8.0", "9.0", "10.0")
 
 
 for repo, branch in get_repositories_and_branches(branch_filter=branch_filter):
