@@ -5,17 +5,16 @@ services:
     image: weblate-oca
     ports:
       - 8001:8080
-    tmpfs:
-      - /app/cache
     volumes:
       - ./data/weblate:/app/data
+      - ./cache/weblate:/app/cache
     env_file:
       - ./environment
     restart: unless-stopped
     depends_on:
       - cache
   cache:
-    image: redis:6-alpine
+    image: redis:7-alpine
     restart: unless-stopped
     # AFE 20191202: add no appendfsynconrewrite and auto aof rewrite min size options
     #command: ["redis-server", "--appendonly", "yes", "--no-appendfsync-on-rewrite", "yes", "--auto-aof-rewrite-min-size", "128mb"]
