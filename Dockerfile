@@ -7,7 +7,7 @@ RUN pip install --no-cache-dir "weblate-odoo-component-generator @ git+https://g
 # wocg-oca needs oca-maintainer-tools to enumerate addons repos and branches
 RUN python3 -m venv /opt/oca-maintainer-tools && \
   /opt/oca-maintainer-tools/bin/pip install --no-cache-dir -U pip wheel setuptools && \
-  /opt/oca-maintainer-tools/bin/pip install --no-cache-dir git+https://github.com/OCA/maintainer-tools@76f737e7499538f4a133325811088c1347aa28fb
+  /opt/oca-maintainer-tools/bin/pip install --no-cache-dir git+https://github.com/OCA/maintainer-tools@63ba9627deddcdea37a4a43a532b586e2d4e7114
 
 COPY wocg-oca /usr/local/bin/
 
