@@ -1,4 +1,3 @@
-version: '2'
 services:
   weblate:
     build: .
@@ -12,7 +11,10 @@ services:
       - ./environment
     restart: unless-stopped
     depends_on:
-      - cache
+      cache:
+        condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
   cache:
     image: redis:7-alpine
     restart: unless-stopped
@@ -22,7 +24,5 @@ services:
     command: [redis-server, --save, '60', '1']
     volumes:
       - ./data/redis:/data
-networks:
-  default:
-    external:
-      name: weblate
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping | grep PONG"]
