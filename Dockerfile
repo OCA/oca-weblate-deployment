@@ -1,8 +1,12 @@
-FROM weblate/weblate:4.17-2
+FROM weblate/weblate:5.6
 
 USER 0
 
-RUN pip install --no-cache-dir "weblate-odoo-component-generator @ git+https://github.com/acsone/weblate-odoo-component-generator@bfe023bdb6b0fdb10b75a6b86adbe5fafd773197"
+RUN . /app/venv/bin/activate \
+ && uv pip install \
+      --no-cache-dir \
+      --compile-bytecode \
+      "weblate-odoo-component-generator @ git+https://github.com/acsone/weblate-odoo-component-generator@weblate-5.6"
 
 # wocg-oca needs oca-maintainer-tools to enumerate addons repos and branches
 RUN python3 -m venv /opt/oca-maintainer-tools && \
