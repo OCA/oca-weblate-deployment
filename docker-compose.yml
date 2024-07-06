@@ -4,7 +4,7 @@ services:
     build: .
     image: weblate-oca
     ports:
-      - 8001:8080
+      - 127.0.0.1:8001:8080
     volumes:
       - ./data/weblate:/app/data
       - ./cache/weblate:/app/cache
