@@ -11,12 +11,12 @@ def branch_filter(branch):
 
 for repo, branch in get_repositories_and_branches(branch_filter=branch_filter):
     subprocess.check_call([
-        '/usr/local/bin/wocg-create-project',
+        '/app/venv/bin/wocg-create-project',
         '--repository', 'https://github.com/OCA/' + repo,
         '--branch', branch,
         '--tmpl-component-slug', '0-oca-project-template-addon',
     ])
 
 subprocess.check_call([
-    '/usr/local/bin/wocg-create-components',
+    '/app/venv/bin/wocg-create-components',
 ])
