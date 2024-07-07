@@ -6,7 +6,7 @@ RUN . /app/venv/bin/activate \
  && uv pip install \
       --no-cache-dir \
       --compile-bytecode \
-      "weblate-odoo-component-generator @ git+https://github.com/acsone/weblate-odoo-component-generator@weblate-5.6"
+      "weblate-odoo-component-generator @ git+https://github.com/acsone/weblate-odoo-component-generator@6509159413f64a0c3f7f98a27e543e06a834e897"
 
 # wocg-oca needs oca-maintainer-tools to enumerate addons repos and branches
 RUN python3 -m venv /opt/oca-maintainer-tools && \
