@@ -1,4 +1,4 @@
-FROM weblate/weblate:5.10
+FROM weblate/weblate:5.10.4.0
 
 USER 0
 
