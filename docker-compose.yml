@@ -9,20 +9,19 @@ services:
       - ./cache/weblate:/app/cache
     env_file:
       - ./environment
-    restart: unless-stopped
     depends_on:
-      cache:
-        condition: service_healthy
+      - cache
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    restart: always
+    read_only: true
+    tmpfs:
+      - /run
+      - /tmp
   cache:
-    image: redis:7-alpine
-    restart: unless-stopped
-    # AFE 20191202: add no appendfsynconrewrite and auto aof rewrite min size options
-    #command: ["redis-server", "--appendonly", "yes", "--no-appendfsync-on-rewrite", "yes", "--auto-aof-rewrite-min-size", "128mb"]
-    # SBI 20221016: use redis command from https://github.com/WeblateOrg/docker-compose/blob/main/docker-compose-https.yml
-    command: [redis-server, --save, '60', '1']
+    image: valkey/valkey:9.0.1
     volumes:
       - ./data/redis:/data
-    healthcheck:
-      test: ["CMD-SHELL", "redis-cli ping | grep PONG"]
+    command: [valkey-server, --save, "60", "1", --loglevel, warning]
+    restart: always
+    read_only: true
